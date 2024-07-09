@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.raphael.tutorialmod.TutorialMod;
 import net.raphael.tutorialmod.block.ModBlocks;
+import net.raphael.tutorialmod.items.custom.MetalDetectorItem;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
@@ -23,6 +24,12 @@ public class ModCreativeModTabs {
 
                         pOutput.accept(ModBlocks.SAPPHIRE_BLOCK.get());
                         pOutput.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());
+
+                        pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
+                        pOutput.accept(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
+
+                        pOutput.accept(ModItems.METAL_DETECTOR.get());
+
                     })
                     .build());
 
