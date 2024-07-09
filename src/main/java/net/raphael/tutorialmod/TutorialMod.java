@@ -25,6 +25,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.raphael.tutorialmod.block.ModBlocks;
+import net.raphael.tutorialmod.items.ModCreativeModTabs;
+import net.raphael.tutorialmod.items.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -61,6 +64,12 @@ public class TutorialMod {
     public TutorialMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         BLOCKS.register(modEventBus);
@@ -82,7 +91,10 @@ public class TutorialMod {
 
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)  {
-
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.SAPPHIRE) ;
+            event.accept(ModItems.RAW_SAPPHIRE);
+        }
     }
 
 
